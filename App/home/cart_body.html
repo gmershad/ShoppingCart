@@ -1,0 +1,36 @@
+﻿<div class="row col-md-12" ng-if="!homeController.isLoading">
+    <div class="col-md-6" ng-repeat="nitroItem in homeController.dealData | searchFor:homeController.searchString">
+        <div class="panel panel-default panel-style">
+            <div class="panel-body">
+                <div class="col-md-3 img-responsive panel panel-default">
+                    <img src="{{nitroItem.image}}" style="height:120px; width:120px;" />
+                </div>
+                <div class="col-md-9">
+                    <div><h4 style="color:#42a7f4;">{{nitroItem.name}}</h4></div>
+                    <div><span class="body-font-style">Purchased by: {{nitroItem.purchased_by}}</span></div>
+                    <div>
+                        <span class="body-font-style"><i class="fa fa-inr"></i> {{nitroItem.price}}</span> <span class="pull-right">
+                            | {{homeController.getRating(nitroItem.rating)}}
+                            <i class="fa fa-star" style="color:#FF4500;" ng-repeat="t in homeController.getYellowStars(nitroItem.rating)"></i>
+                            <i class="fa fa-star" style="color:#878685;" ng-repeat="t in homeController.getGreyStars(nitroItem.rating)"></i>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="body-font-style">
+                            <i class="fa fa-tag"></i>
+                            {{homeController.getTags(nitroItem.tags)}}
+                        </span>
+                    </div>
+                    <div>
+                        <span class="body-font-style"><i class="fa fa-link"></i> Link:</span> <a href="" ng-click="homeController.openLinkDetails(nitroItem.link )">
+                            {{nitroItem.link | limitTo:30}}
+                        </a>
+                        <div class="pull-right table-bordered" ng-click="homeController.saveLikes(nitroItem.name)" style="cursor: pointer;width:50px; height:40px; background-color:#ededed;">
+                            <div style="margin-top:8px; margin-left:8px;"><i class="fa fa-thumbs-o-up"></i> {{homeController.getLikes(nitroItem.name)}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

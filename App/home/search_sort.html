@@ -1,0 +1,33 @@
+﻿<div class="row col-md-12" ng-if="!homeController.isLoading" showerror="true" errormessage="homeController.errorMessage">
+    <div class="col-md-6">
+        <div class='search-box'>
+            <form class='search-form'>
+                <input class='form-control' ng-model="homeController.searchString" placeholder="Search (by tags)" name="srch-term" type='text'>
+                <button ng-if="!homeController.searchString" class='btn btn-link search-btn' ng-click="homeController.clearText()">
+                    <i class='glyphicon glyphicon-search'></i>
+                </button>
+                <button ng-if="homeController.searchString" class='btn btn-link search-btn' ng-click="homeController.clearText()">
+                    <i class='glyphicon glyphicon-remove'></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-body text-center">
+                <div class="col-md-3" style="font-size:15px; color:#1c6268; font-weight:900;">Sort by</div>
+                <div class="col-md-5" style="color:#1c6268;">
+                    <label><input type="radio" name="sort" ng-change="homeController.sortData('rating')" ng-model="homeController.sortType" value="rating" /> Rating </label>&nbsp;
+                    <label><input type="radio" name="sort" ng-model="homeController.sortType" value="like" ng-change="homeController.sortData('like')" /> Like </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="panel panel-primary">
+            <div class="panel-body text-center">
+                <span style="font-size:14px; font-weight:bold;">Total Likes: {{homeController.totalLikes}}</span>
+            </div>
+        </div>
+    </div>
+</div>
